@@ -1,0 +1,1 @@
+.breadcrumb{align-items:center;display:inline-flex;font-size:13px}.breadcrumb a{color:var(--color-font-3);margin-left:-3px;text-decoration:none}.breadcrumb a:hover{color:var(--color-font-2)}.breadcrumb em{align-items:center;color:var(--color-font-3);display:inline-flex;margin:0 5px}.breadcrumb em svg{height:14px;width:14px}.breadcrumb .ellipsis{max-width:50vw}

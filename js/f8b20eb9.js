@@ -1,0 +1,1 @@
+(()=>{"use strict";document.addEventListener("DOMContentLoaded",(()=>{document.querySelectorAll(".nav-items li").forEach((t=>{var e;const a=null!==(e=t.getAttribute("data-path"))&&void 0!==e?e:"";location.pathname.indexOf(a)>-1?t.classList.add("active"):t.classList.remove("active")}))}))})();
