@@ -135,7 +135,7 @@
         </a>
       </li></ul>
   <p>Category</p>
-  <ul><li class="">
+  <ul><li class="active">
         <a href="/categories/learning/">
           
           <div class="ellipsis">
@@ -185,6 +185,19 @@
       </g>
     </svg>
   </em>
+  <a href="/categories/learning/">
+    learning
+  </a>
+  
+  
+  
+  <em>
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 20 20">
+      <g fill="none">
+        <path d="M7.733 4.207a.75.75 0 0 1 1.06.026l5.001 5.25a.75.75 0 0 1 0 1.035l-5 5.25a.75.75 0 1 1-1.087-1.034L12.216 10l-4.51-4.734a.75.75 0 0 1 .027-1.06z" fill="currentColor"></path>
+      </g>
+    </svg>
+  </em>
   <span class="ellipsis">
     AHP
   </span>
@@ -199,10 +212,18 @@
       <div class="article-container">
         <!-- 文章tags -->
         
+        <ul class="tags">
+          
+          <li>
+            <a># 数模知识</a>
+          </li>
+          
+        </ul>
+        
         <!-- 渲染文章内容 -->
         <article>
           <h1 class="post-title">AHP</h1>
-          <p class="post-info">Updated on: 2023-12-10 17:33:52</p>
+          <p class="post-info">Updated on: 2023-12-10 17:40:09</p>
           <h1 id="一、层次分析法（原理）"><a href="#一、层次分析法（原理）" class="headerlink" title="一、层次分析法（原理）"></a>一、层次分析法（原理）</h1><h2 id="1-权重表"><a href="#1-权重表" class="headerlink" title="1.权重表"></a>1.权重表</h2><p><strong>各指标和为1、某指标下各对象和为1</strong></p>
 <h2 id="2-指标-目标对象的确定（检索）"><a href="#2-指标-目标对象的确定（检索）" class="headerlink" title="2.指标&#x2F;目标对象的确定（检索）"></a>2.指标&#x2F;目标对象的确定（检索）</h2><p>尽量有据可依专业性强，即检索文献、<strong>虫部落</strong>检索网站：Google、百度、知网、万方、微信、知乎<strong>等</strong></p>
 <h2 id="3-权重确定（层次分析思想）"><a href="#3-权重确定（层次分析思想）" class="headerlink" title="3.权重确定（层次分析思想）"></a>3.权重确定（<em><strong>层次分析思想</strong></em>）</h2><h3 id="①两两对比进行评分，-并作出对应比较矩阵（判断矩阵）"><a href="#①两两对比进行评分，-并作出对应比较矩阵（判断矩阵）" class="headerlink" title="①两两对比进行评分，  并作出对应比较矩阵（判断矩阵）"></a>①两两对比进行评分，  并作出对应比较矩阵（判断矩阵）</h3><p><img src="/2023/12/10/AHP/image-20231210104955041.png" alt="image-20231210104955041"></p>
@@ -220,7 +241,75 @@
 <h4 id="C-特征值法"><a href="#C-特征值法" class="headerlink" title="C.特征值法"></a>C.特征值法</h4><p><img src="/2023/12/10/AHP/image-20231210120019836.png" alt="image-20231210120019836"></p>
 <p><img src="/2023/12/10/AHP/image-20231210120033704.png" alt="image-20231210120033704"></p>
 <h3 id="④计算最终得分"><a href="#④计算最终得分" class="headerlink" title="④计算最终得分"></a>④计算最终得分</h3><p>将每列各指标权重与各对象权重进行相乘后相加。</p>
-<h1 id="二、层次分析法代码"><a href="#二、层次分析法代码" class="headerlink" title="二、层次分析法代码"></a>二、层次分析法代码</h1><h1 id="三、层次分析法论文书写与层次结构图"><a href="#三、层次分析法论文书写与层次结构图" class="headerlink" title="三、层次分析法论文书写与层次结构图"></a>三、层次分析法论文书写与层次结构图</h1><p><img src="/2023/12/10/AHP/image-20231210120636420.png" alt="image-20231210120636420"></p>
+<h1 id="二、层次分析法代码"><a href="#二、层次分析法代码" class="headerlink" title="二、层次分析法代码"></a>二、层次分析法代码</h1><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 导入相关库</span>
+<span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+
+<span class="token comment"># index = np.mat([0.2, 0.3, 0.5],["对象1","对象2","对象3"])  # 每一行代表一个对象的指标权重</span>
+<span class="token comment"># A为自己构造的输入判别矩阵（按行输入）</span>
+A <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+              <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+              <span class="token punctuation">[</span><span class="token number">1</span> <span class="token operator">/</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">1</span> <span class="token operator">/</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span> <span class="token operator">/</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+              <span class="token punctuation">[</span><span class="token number">1</span> <span class="token operator">/</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">1</span> <span class="token operator">/</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+              <span class="token punctuation">[</span><span class="token number">1</span> <span class="token operator">/</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">1</span> <span class="token operator">/</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token comment"># 查看行数和列数</span>
+<span class="token punctuation">[</span>m<span class="token punctuation">,</span> n<span class="token punctuation">]</span> <span class="token operator">=</span> A<span class="token punctuation">.</span>shape
+B <span class="token operator">=</span> np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span><span class="token punctuation">(</span>m<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 求特征值和特征向量</span>
+V<span class="token punctuation">,</span> D <span class="token operator">=</span> np<span class="token punctuation">.</span>linalg<span class="token punctuation">.</span>eig<span class="token punctuation">(</span>A<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'特征值：'</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>V<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'特征向量：'</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>D<span class="token punctuation">,</span> <span class="token string">"\n"</span><span class="token punctuation">,</span> <span class="token string">"_"</span> <span class="token operator">*</span> <span class="token number">50</span><span class="token punctuation">)</span>
+<span class="token comment"># 最大特征值</span>
+tzz <span class="token operator">=</span> np<span class="token punctuation">.</span><span class="token builtin">max</span><span class="token punctuation">(</span>V<span class="token punctuation">)</span>
+<span class="token comment"># print(tzz)</span>
+<span class="token comment"># 对应最大特征向量</span>
+k <span class="token operator">=</span> <span class="token punctuation">[</span>i <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>V<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">if</span> V<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> np<span class="token punctuation">.</span><span class="token builtin">max</span><span class="token punctuation">(</span>V<span class="token punctuation">)</span><span class="token punctuation">]</span>
+tzx <span class="token operator">=</span> D<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span> k<span class="token punctuation">]</span>
+<span class="token comment"># print(tzx)</span>
+
+
+<span class="token comment"># 一致性检验</span>
+CI <span class="token operator">=</span> <span class="token punctuation">(</span>tzz <span class="token operator">-</span> n<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
+RI <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0.52</span><span class="token punctuation">,</span> <span class="token number">0.89</span><span class="token punctuation">,</span> <span class="token number">1.12</span><span class="token punctuation">,</span> <span class="token number">1.26</span><span class="token punctuation">,</span> <span class="token number">1.36</span><span class="token punctuation">,</span> <span class="token number">1.41</span><span class="token punctuation">,</span> <span class="token number">1.46</span><span class="token punctuation">,</span> <span class="token number">1.49</span><span class="token punctuation">,</span> <span class="token number">1.52</span><span class="token punctuation">,</span> <span class="token number">1.54</span><span class="token punctuation">,</span> <span class="token number">1.56</span><span class="token punctuation">,</span> <span class="token number">1.58</span><span class="token punctuation">,</span> <span class="token number">1.59</span><span class="token punctuation">]</span>
+<span class="token comment"># 判断是否通过一致性检验</span>
+CR <span class="token operator">=</span> CI <span class="token operator">/</span> RI<span class="token punctuation">[</span>n<span class="token punctuation">]</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'CI='</span><span class="token punctuation">,</span> CI<span class="token punctuation">,</span> <span class="token string">"\n"</span><span class="token punctuation">,</span> <span class="token string">'CR='</span><span class="token punctuation">,</span> CR<span class="token punctuation">,</span> <span class="token string">"\n"</span><span class="token punctuation">)</span>
+<span class="token keyword">if</span> CR <span class="token operator">>=</span> <span class="token number">0.1</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'没有通过一致性检验\n'</span><span class="token punctuation">)</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'通过一致性检验'</span><span class="token punctuation">,</span> <span class="token string">"\n"</span><span class="token punctuation">,</span> <span class="token string">"_"</span> <span class="token operator">*</span> <span class="token number">50</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 算术平均数权重</span>
+C <span class="token operator">=</span> np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    B<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span> i<span class="token punctuation">]</span> <span class="token operator">=</span> A<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span> i<span class="token punctuation">]</span> <span class="token operator">/</span> np<span class="token punctuation">.</span><span class="token builtin">sum</span><span class="token punctuation">(</span>A<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    C<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> np<span class="token punctuation">.</span><span class="token builtin">sum</span><span class="token punctuation">(</span>B<span class="token punctuation">[</span>i<span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">/</span> n
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"算术平均数法权重"</span><span class="token punctuation">,</span> <span class="token string">"\n"</span><span class="token punctuation">,</span> C<span class="token punctuation">,</span> <span class="token string">"\n"</span><span class="token punctuation">,</span> <span class="token string">"_"</span> <span class="token operator">*</span> <span class="token number">50</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 几何平均数权重</span>
+C1 <span class="token operator">=</span> np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    C1<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> np<span class="token punctuation">.</span>prod<span class="token punctuation">(</span>A<span class="token punctuation">[</span>i<span class="token punctuation">,</span> <span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">**</span> <span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">/</span> <span class="token builtin">float</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">)</span>
+geo_mean_sum <span class="token operator">=</span> np<span class="token punctuation">.</span><span class="token builtin">sum</span><span class="token punctuation">(</span>C1<span class="token punctuation">)</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    C1<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> C1<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">/</span> geo_mean_sum
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"几何平均数法权重"</span><span class="token punctuation">,</span> <span class="token string">"\n"</span><span class="token punctuation">,</span> C1<span class="token punctuation">,</span> <span class="token string">"\n"</span><span class="token punctuation">,</span> <span class="token string">"_"</span> <span class="token operator">*</span> <span class="token number">50</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 特征向量法</span>
+quan <span class="token operator">=</span> np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    quan<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> tzx<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">/</span> np<span class="token punctuation">.</span><span class="token builtin">sum</span><span class="token punctuation">(</span>tzx<span class="token punctuation">)</span>
+Q <span class="token operator">=</span> quan
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"特征向量法权重"</span><span class="token punctuation">,</span> <span class="token string">"\n"</span><span class="token punctuation">,</span> Q<span class="token punctuation">,</span> <span class="token string">"\n"</span><span class="token punctuation">,</span> <span class="token string">"_"</span> <span class="token operator">*</span> <span class="token number">50</span><span class="token punctuation">)</span>
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h1 id="三、层次分析法论文书写与层次结构图"><a href="#三、层次分析法论文书写与层次结构图" class="headerlink" title="三、层次分析法论文书写与层次结构图"></a>三、层次分析法论文书写与层次结构图</h1><p><img src="/2023/12/10/AHP/image-20231210120636420.png" alt="image-20231210120636420"></p>
 <p><img src="/2023/12/10/AHP/image-20231210120713242.png" alt="image-20231210120713242"></p>
 <p><img src="/2023/12/10/AHP/image-20231210120538553.png" alt="image-20231210120538553"></p>
 
